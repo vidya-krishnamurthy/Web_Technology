@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form (POST)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 20px auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        select {
+            width: calc(100% - 22px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="radio"] {
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+	<h1><center>EMPLOYEE DETAILS</center></h1>
+    <form action="http://localhost:7000/login" method="post">
+        <label for="username">EMPLOYEE NAME:</label>
+        <input type="text" id="username" name="username" value=""><br>
+        
+        <label for="id">EMPLOYEE ID:</label>
+        <input type="text" id="id" name="id" value=""><br>
+        
+        <label for="branch">BRANCH:</label>
+        <select id="branch" name="branch">
+            <option value="select">Select Branch</option>
+            <option value="HQ">Headquarters</option>
+            <option value="development">Development</option>
+            <option value="QA">Quality Assurance</option>
+            <option value="support">Customer Support</option>
+            <option value="sales">Sales</option>
+        </select><br>
+        
+        <label for="gender">GENDER:</label><br>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">Female</label><br>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">Male</label><br>
+        
+        <label for="phno">MOBILE NO:</label>
+        <input type="text" id="phno" name="phno" value=""><br>
+        
+        <label for="branchadd">BRANCH ADDRESS:</label>
+        <input type="text" id="branchadd" name="branchadd" value=""><br>
+        
+        <input type="submit" name="login" value="Login">
+    </form>
+</body>
+</html>
