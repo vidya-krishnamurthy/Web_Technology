@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Registration Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: plum;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    input[type="text"],
+    input[type="date"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="password"]
+    select {
+        width: 100%;
+        padding: 10px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .errorBox {
+        color: red;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Student Registration Form</h2>
+    <form id="registrationForm" action="#" method="get">
+        <label for="rollno">Roll No:</label>
+        <input type="text" id="rollno" name="rollno" required onblur="validateRollNo()">
+        <div id="rollnoError" class="errorBox"></div>
+        
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required onblur="validateName()">
+        <div id="nameError" class="errorBox"></div>
+
+        <label>Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label><br>
+        <div id="genderError" class="errorBox"></div>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required onblur="validateDOB()">
+        <div id="dobError" class="errorBox"></div>
+
+        <label>Programming Languages Known:</label><br>
+        <input type="checkbox" id="lang1" name="lang1" value="C">
+        <label for="lang1">C</label><br>
+        <input type="checkbox" id="lang2" name="lang2" value="C++">
+        <label for="lang2">C++</label><br>
+        <input type="checkbox" id="lang3" name="lang3" value="Java">
+        <label for="lang3">Java</label><br>
+        <div id="languagesError" class="errorBox"></div>
+
+        <label for="interest">Areas of Interest:</label>
+        <select id="interest" name="interest" required onblur="validateInterest()">
+            <option value="">Select an option</option>
+            <option value="webdev">Web Development</option>
+            <option value="appdev">App Development</option>
+            <option value="networking">Networking</option>
+            <option value="ai">Artificial Intelligence</option>
+        </select>
+        <div id="interestError" class="errorBox"></div>
+
+        <label for="phoneno">Phone No:</label>
+        <input type="tel" id="phoneno" name="phoneno" pattern="[0-9]{10}" required onblur="validatePhone()">
+        <div id="phonenoError" class="errorBox"></div>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required onblur="validateEmail()">
+        <div id="emailError" class="errorBox"></div>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required onblur="validatePassword()">
+        <div id="passwordError" class="errorBox"></div>
+
+        <input type="button" value="Submit" onclick="validateForm()">
+    </form>
+</div>
+<script>
+function validateRollNo() {
+    var rollno = document.getElementById("rollno").value;
+    var rollnoError = document.getElementById("rollnoError");
+    if (!/^(\d{2}[A-Za-z]{3}\d{3})$/.test(rollno)) {
+        rollnoError.innerText = "Please enter a valid Roll No. (Format: 2 digit, 3 letters, 3 digits)";
+    } else {
+        rollnoError.innerText = "";
+    }
+}
+
+function validateName() {
+    var name = document.getElementById("name").value;
+    var nameError = document.getElementById("nameError");
+    if (!/^[A-Z][A-z]+\s[A-Z]$/.test(name)) {
+        nameError.innerText = "Name should alphabets.";
+    } else {
+        nameError.innerText = "";
+    }
+}
+
+function validateGender() {
+    var genderMale = document.getElementById("male").checked;
+    var genderFemale = document.getElementById("female").checked;
+    var genderError = document.getElementById("genderError");
+    if (!genderMale && !genderFemale) {
+        genderError.innerText = "Please select a gender.";
+    } else {
+        genderError.innerText = "";
+    }
+}
+
+function validateDOB() {
+    var dob = document.getElementById("dob").value;
+    var dobError = document.getElementById("dobError");
+    if (dob === "") {
+        dobError.innerText = "Please select your Date of Birth.";
+    } else {
+        dobError.innerText = "";
+    }
+}
+
+function validateLanguages() {
+    var lang1 = document.getElementById("lang1").checked;
+    var lang2 = document.getElementById("lang2").checked;
+    var lang3 = document.getElementById("lang3").checked;
+    var languagesError = document.getElementById("languagesError");
+    if (!lang1 && !lang2 && !lang3) {
+        languagesError.innerText = "Please select at least one programming language known.";
+    } else {
+        languagesError.innerText = "";
+    }
+}
+
+document.getElementById("lang1").addEventListener("blur", validateLanguages);
+document.getElementById("lang2").addEventListener("blur", validateLanguages);
+document.getElementById("lang3").addEventListener("blur", validateLanguages);
+
+function validateInterest() {
+    var interest = document.getElementById("interest").value;
+    var interestError = document.getElementById("interestError");
+    if (interest === "") {
+        interestError.innerText = "Please select an area of interest.";
+    } else {
+        interestError.innerText = "";
+    }
+}
+
+function validatePhone() {
+    var phoneno = document.getElementById("phoneno").value;
+    var phonenoError = document.getElementById("phonenoError");
+    if (!/^[0-9]{10}$/.test(phoneno)) {
+        phonenoError.innerText = "Please enter a valid 10-digit phone number.";
+    } else {
+        phonenoError.innerText = "";
+    }
+}
+
+function validateEmail() {
+    var email = document.getElementById("email").value;
+    var emailError = document.getElementById("emailError");
+    if (!/^\S+@\S+\.\S+$/.test(email)) {
+        emailError.innerText = "Please enter a valid email address.";
+    } else {
+        emailError.innerText = "";
+    }
+}
+
+function validatePassword() {
+    var password = document.getElementById("password").value;
+    var passwordError = document.getElementById("passwordError");
+    if (password.length < 8) {
+        passwordError.innerText = "Password must be at least 8 characters long.";
+    } else {
+        passwordError.innerText = "";
+    }
+}
+
+function validateForm() {
+    validateRollNo();
+    validateName();
+    validateGender();
+    validateDOB();
+    validateLanguages();
+    validateInterest();
+    validatePhone();
+    validateEmail();
+    validatePassword();
+
+ var errorMessages = document.querySelectorAll('.errorBox');
+    var isValid = true;
+    errorMessages.forEach(function (errorMessage) {
+        if (errorMessage.innerText !== "") {
+            isValid = false;
+        }
+    });
+    if (isValid) {
+        window.location.href = "thank1.html";
+    }
+}
+</script>
+</body>
+</html>
