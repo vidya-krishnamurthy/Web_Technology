@@ -1,0 +1,39 @@
+[
+{
+    "name": "VIDYA K",
+    "registerNumber": "22ITR117",
+    "dept": "IT",
+    "cgpa":"9.01"
+},
+  {
+      "name": "PRAVEENA P",
+      "registerNumber": "22ITR079",
+      "dept": "IT",
+      "cgpa":"9.23"
+  },
+  {
+      "name": "NIRAJANA SRI S",
+      "registerNumber": "22ITR070",
+      "dept": "IT",
+      "cgpa":"9.06"
+  },
+  {
+      "name": "VASUMATHI K",
+    "registerNumber": "22ITR114",
+    "dept": "IT",
+    "cgpa":"8.95"
+  },
+  {
+      "name": "VEDHA VITHYA S",
+    "registerNumber": "22ITR115",
+    "dept": "IT",
+    "cgpa":"9.44"
+  },
+  
+    {
+        "name": "SANDHIYA K",
+      "registerNumber": "22ITR088",
+      "dept": "IT",
+      "cgpa":"7.91"
+  }
+]
