@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Court Management</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 20px;
+    }
+    #menu-list .card {
+      cursor: pointer;
+    }
+    #menu-list .card-body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #menu-list .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    #menu-list .card-text {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    #order-summary {
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="form-section">
+      <h1>Food Court Management</h1>
+      <form id="user-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label for="mobile">Mobile No</label>
+          <input type="text" id="mobile" class="form-control" required>
+        </div>
+        <div class="form-group">
+          <label>Preference</label><br>
+          <input type="radio" id="veg" name="preference" value="veg" required>
+          <label for="veg">Veg</label>
+          <input type="radio" id="non-veg" name="preference" value="non-veg">
+          <label for="non-veg">Non-Veg</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div id="menu-section" style="display: none;">
+      <h1>Food Court Management</h1>
+      <h2 id="greeting"></h2>
+      <div id="menu-list" class="row"></div>
+      <button id="view-order" class="btn btn-info mt-4" style="display: none;" onclick="myfunction()">View Order</button>
+      <div id="order-summary" style="display: none;">
+        <h2>Order Summary</h2>
+        <ul id="order-list" class="list-group"></ul>
+        <p>Total Cost: <span id="total-cost"></span></p>
+        <a href="index.html">BACK</a>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js">
+  </script>
+  <script>
+        function myFunction()
+    {
+        var txt;
+        if(confirm("Your order is Placed.....!"))
+        {
+            txt="You pressed OK!";
+        }
+        else{
+            txt="You pressed Cancel..!"
+        }
+    }
+    $(document).ready(function() {
+      const menuItems = {
+        veg: [
+          { id: 1, name: 'Veg Biryani', price: 90 },
+          { id: 2, name: 'Mushroom Gravy', price: 100 },
+          { id: 3, name: 'Aloo Paratha', price: 50 },
+          { id: 4, name: 'Sweet Potato Curry', price: 60 },
+          { id: 5, name: 'Dosa', price: 30 },
+          { id: 6, name: 'Gobi Manchurian', price: 80 },
+          { id: 7, name: 'Cauliflower Chilli', price: 70 }
+        ],
+        nonVeg: [
+          { id: 8, name: 'Chicken Biryani', price: 130 },
+          { id: 9, name: 'Mutton Biryani', price: 200 },
+          { id: 10, name: 'Chicken Gravy', price: 100 },
+          { id: 11, name: 'Pepper Chicken', price: 150 },
+          { id: 12, name: 'Crispy Chicken', price: 200 }
+        ]
+      };
+      $('#user-form').submit(function(e) {
+        e.preventDefault();
+        const name = $('#name').val();
+        const mobile = $('#mobile').val();
+        const preference = $('input[name="preference"]:checked').val();
+        localStorage.setItem('userData', JSON.stringify({ name, mobile, preference }));
+        $('#form-section').hide();
+        $('#menu-section').show();
+
+        // Display user name and preference
+        $('#greeting').text(`Welcome, ${name}. Here is your ${preference === 'veg' ? 'Veg' : 'Non-Veg'} Menu:`);
+
+        // Generate menu based on preference
+        let selectedMenu = [];
+        if (preference === 'veg') {
+          selectedMenu = menuItems.veg;
+        } else if (preference === 'non-veg') {
+          selectedMenu = menuItems.nonVeg;
+        }
+
+        selectedMenu.forEach(item => {
+          $('#menu-list').append(`
+            <div class="col-md-3 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">${item.name}</h5>
+                  <p class="card-text">$${item.price}</p>
+                  <input type="checkbox" class="menu-item" data-id="${item.id}" data-price="${item.price}">
+                </div>
+              </div>
+            </div>
+          `);
+        });
+
+        if (selectedMenu.length > 0) {
+          $('#view-order').show();
+        }
+      });
+
+      $('#view-order').click(function() {
+        const selectedItems = [];
+        let totalCost = 0;
+        $('.menu-item:checked').each(function() {
+          const itemId = $(this).data('id');
+          const itemPrice = $(this).data('price');
+          const itemName = Object.values(menuItems).flat().find(item => item.id === itemId).name;
+          selectedItems.push({ name: itemName, price: itemPrice });
+          totalCost += itemPrice;
+        });
+        $('#order-list').empty();
+        selectedItems.forEach(item => {
+          $('#order-list').append(`<li class="list-group-item">${item.name} - ${item.price}</li>`);
+        });
+        $('#total-cost').text(`$${totalCost}`);
+        $('#order-summary').show();
+      });
+    });
+  </script>
+</body>
+</html>

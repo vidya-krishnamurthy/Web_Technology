@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="time"],
+        input[type="number"],
+        select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        input[type="submit"],
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            display: inline-block;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover,
+        button:hover {
+            background-color: #0056b3;
+        }
+        .button-container {
+            text-align: center;
+        }
+        .radio-container {
+            margin-bottom: 10px;
+        }
+        .radio-label {
+            margin-right: 10px;
+            color: #333;
+        }
+        .navbar-inverse {
+            background-color: #333;
+            border-color: #333;
+        }
+        .navbar-inverse .navbar-brand {
+            color: #fff;
+        }
+        .navbar-inverse .navbar-nav > li > a {
+            color: #ccc;
+        }
+        .navbar-inverse .navbar-nav > li > a:hover,
+        .navbar-inverse .navbar-nav > li > a:focus {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+          <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Online Food Court Services</a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="menu.html">Menu</a></li>
+                  <li><a href="login.html">Login</a></li>
+                  <li><a href="table.html">Reserve</a></li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+    <h1>TABLE BOOKING</h1>
+    <form id="form" method="get">
+        <label for="username">NAME:</label>
+        <input type="text" id="username" name="username" value=""><br>
+        
+        <label for="id">EMAIL ID</label>
+        <input type="email" id="id" name="id" placeholder="Enter your email " value=""><br>
+        
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" name="phone" value="" required><br>
+
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date" placeholder="dd-mm-yyyy" value="">
+
+        <label for="time">Time</label>
+        <input type="time" id="time" name="time" placeholder="--:--" required>
+
+        <label for="people">No. of People</label>
+        <input type="number" id="people" name="people" required>
+
+
+        <div class="button-container">
+            <button type="submit" onclick="set('/insert', event)">INSERT</button>
+            <button type="submit" onclick="set('/delete', event)">DELETE</button>
+            <button type="submit" onclick="set('/update', event)">UPDATE</button>
+            <button type="submit" onclick="set('/display', event)">DETAILS</button><br><br>
+            <a href="index.html">BACK</a>
+        </div>
+    </form>
+
+    <script>
+        function set(path, event) {
+            event.preventDefault(); 
+            document.getElementById('form').action = 'http://localhost:7050' + path;
+            document.getElementById('form').submit();         
+        }
+    </script>
+</body>
+</html>

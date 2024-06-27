@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container1 {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .container center h2 {
+            color: #FFB03B;
+        }
+
+
+        .container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .container input[type=text], .container input[type=password] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 4px;
+        }
+
+        .container button {
+            background-color: #FFB03B;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 4px;
+        }
+
+        .container button:hover {
+            background-color: #e69a00;
+        }
+
+        .container .psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        .container .psw a {
+            color: #FFB03B;
+        }
+
+        .container .psw a:hover {
+            color: #e69a00;
+        }
+
+        .container input[type=checkbox] {
+            margin-top: 16px;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="container1">
+    <center>
+        <h2><b>LOGIN FORM</b></h2>
+    </center>
+
+    <form>
+        
+
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required="">
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required="">
+            
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+            
+            <button type="submit" onclick="myFunction()">Login</button>
+            <a href="index.html">BACK</a>
+        </div>
+    </form>
+</div>
+<script>
+    function myFunction()
+    {
+        var txt;
+        if(confirm("Press OK to continue...!"))
+        {
+            txt="You pressed OK!";
+        }
+        else{
+            txt="You pressed Cancel..!"
+        }
+    }
+</script>
+</body>
+</html>
