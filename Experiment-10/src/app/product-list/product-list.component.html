@@ -1,0 +1,40 @@
+<!-- src/app/product-list/product-list.component.html -->
+<div class="product-list">
+  <div class="product-card">
+    <img src="https://tse4.mm.bing.net/th?id=OIP.KWZbi1rZZHNwwkAYl8ghDgHaHa&pid=Api&P=0&h=180" alt="Product 1" class="product-image" width="170" height="170"/>
+    <h2>Mineral crystal dial window</h2>
+    <p>The Sonata Classic Watch is a timeless piece with a classic design. It features an analog display, stainless steel strap, and is water-resistant up to 50 meters, making it suitable for everyday wear. The watch has a case diameter of 40mm and is powered by quartz movement for accurate timekeeping. The mineral crystal dial window ensures durability and scratch resistance.
+    </p>
+    <p>Rs.3000</p>
+    <button (click)="addToCart({id: 1, name: 'Mineral crystal dial window', price: 3000, description: 'Description for Product 1', imageUrl: 'https://tse4.mm.bing.net/th?id=OIP.KWZbi1rZZHNwwkAYl8ghDgHaHa&pid=Api&P=0&h=180'})">Add To Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="http://www.pngall.com/wp-content/uploads/2/Rolex-Watch-PNG-Free-Image.png" alt="Product 2" class="product-image" width="170" height="170"/>
+    <h2>Sonata Luxury Watches</h2>
+    <p>Elevate your style with the Sonata Luxury Watch. This watch features a stylish design with a metal strap, suitable for both casual and formal occasions. The quartz movement ensures accurate timekeeping, while the water-resistant feature adds durability. Available in various colors and designs, you can choose the one that complements your fashion statement.
+    </p>
+    <p>Rs.2500</p>
+    <button (click)="addToCart({id: 2, name: 'Sonata Luxury Watches', price: 2500, description: 'Description for Product 2', imageUrl: 'https://m.media-amazon.com/images/I/61ERDR3tATL._AC_UF1000,1000_QL80_.jpg'})">Add To Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="https://www.mastersintime.com/pictures/swarovski-crystalline-aura-5519459-11414640.jpg" alt="Product 3" class="product-image" />
+    <h2>Sonata Fashion Watch</h2>
+    <p> The quartz movement ensures accurate timekeeping, while the water-resistant feature adds durability. Available in various colors and designs, you can choose the one that complements your fashion statement.</p>
+    <p>Rs.4000</p>
+    <button (click)="addToCart({id: 3, name: 'Sonata Fashion Watch', price: 4000, description: 'Description for Product 3', imageUrl: 'https://www.mastersintime.com/pictures/swarovski-crystalline-aura-5519459-11414640.jpg'})">Add To Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="https://1.bp.blogspot.com/-w7RMawmVZUE/VjGW1sJ9VcI/AAAAAAAAC4Q/W65Ow31R9Jo/s1600/2015-Drop-Shipping-Promotional-Gifts-Women-Vogue-Dress-Watches-Swan-Pendant-Rhinestone-Clocks-Ladies-Wristwatch-Super.jpg" alt="Product 4" class="product-image" />
+    <h2>Sonata Classic Watch</h2>
+    <p>The Sonata Classic Watch is a timeless piece with a classic design. It features an analog display, stainless steel strap, and is water-resistant up to 50 meters, making it suitable for everyday wear.</p>
+    <p>Rs.4500</p>
+    <button (click)="addToCart({id: 4, name: 'Sonata Classic Watch', price: 4500, description: 'Description for Product 4', imageUrl: 'https://1.bp.blogspot.com/-w7RMawmVZUE/VjGW1sJ9VcI/AAAAAAAAC4Q/W65Ow31R9Jo/s1600/2015-Drop-Shipping-Promotional-Gifts-Women-Vogue-Dress-Watches-Swan-Pendant-Rhinestone-Clocks-Ladies-Wristwatch-Super.jpg'})">Add To Cart</button>
+  </div>
+  <div class="product-card">
+    <img src="https://5.imimg.com/data5/FK/AE/MY-43284785/sonata-wrist-watch-500x500.jpg" alt="Product 5" class="product-image" width="190" height="190" />
+    <h2>Sonata Sports Watch</h2>
+    <p> The Sonata Sports Watch is designed for active lifestyles. It features a digital display with backlight for easy reading in any lighting condition.</p>
+    <p>Rs.5000</p>
+    <button (click)="addToCart({id: 5, name: 'Sonata Sports Watch', price: 5000, description: 'Description for Product 5', imageUrl: 'https://5.imimg.com/data5/FK/AE/MY-43284785/sonata-wrist-watch-500x500.jpg'})">Add To Cart</button>
+  </div>
+</div>
